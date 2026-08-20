@@ -37,42 +37,152 @@
 }
 .career-info-box {
   display: flex;
-  justify-content: space-between;
+  width: 100%;
   margin-bottom: 50px;
 }
-.career-info-box p {
-  width: 40%;
-  font-size: 18px;
-  font-weight: 300;
-  margin: 0;
+.career-left-align .career-card {
+  margin-right: auto;
 }
-.career-info-in {
+.career-right-align .career-card {
+  margin-left: auto;
+}
+.career-card {
+  width: 42%;
   display: flex;
-  width: 40%;
-  justify-content: space-between;
-  gap: 50px;
+  flex-direction: column;
+  position: relative;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  padding: 35px 40px;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.015);
+  gap: 20px;
 }
-.career-info h3 {
-  font-size: 48px;
+.career-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.career-card-header h4 {
+  font-size: 26px !important;
+  line-height: 30px !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+  color: #fff !important;
+}
+.career-card-header h5 {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: var(--accentColor) !important;
+  margin: 0 !important;
+  text-transform: none !important;
+  letter-spacing: 0.5px !important;
+  opacity: 1 !important;
+}
+.career-card-dates {
+  font-size: 14px;
+  font-weight: 300;
+  color: #a0a0a0;
+  margin-top: 2px;
+}
+.career-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.career-card-body h4 {
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin: 0px;
+  font-size: 13px;
+  opacity: 0.3;
+  text-transform: uppercase;
+}
+.career-card-body p {
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 200;
   margin: 0;
-  font-weight: 500;
-  line-height: 45px;
+  color: #e0e0e0;
+}
+.career-card-body h5 {
+  font-weight: 300;
+  opacity: 0.5;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 15px 0 5px 0;
+  color: #fff !important;
+}
+.career-tags-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.career-tag {
+  font-size: 12px;
+  font-weight: 400;
+  padding: 3px 10px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  color: #ccc;
+}
+.career-btn-container {
+  display: flex;
+  margin-top: 15px;
+}
+.career-btn {
+  padding: 8px 20px;
+  background-color: transparent;
+  border: 1px solid var(--accentColor);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 13px;
+  transition: 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  width: fit-content;
+}
+.career-btn:hover {
+  background-color: var(--accentColor);
+  color: #fff;
 }
 
-.career-info h4 {
-  font-size: 33px;
-  line-height: 30px;
-  letter-spacing: 0.8px;
-  font-weight: 500;
-  margin: 0;
+/* Corner ticks styling matching what-corner */
+.career-card::before,
+.career-corner::before,
+.career-card::after,
+.career-corner::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border: 2px solid #fff;
 }
-.career-info h5 {
-  font-weight: 400;
-  letter-spacing: 0.7px;
-  font-size: 20px;
-  text-transform: capitalize;
-  margin: 10px 0px;
-  color: var(--accentColor);
+.career-card::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+.career-corner::before {
+  top: -2px;
+  right: -2px;
+  border-left: none;
+  border-bottom: none;
+}
+.career-card::after {
+  bottom: -2px;
+  left: -2px;
+  border-top: none;
+  border-right: none;
+}
+.career-corner::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
 }
 .career-timeline {
   position: absolute;
@@ -135,26 +245,10 @@
     font-size: 50px;
     line-height: 50px;
   }
-  .career-info h4 {
-    font-size: 22px;
-    line-height: 24px;
-    width: 180px;
+  .career-card-body p {
+    font-size: 13px;
   }
-  .career-info h5 {
-    font-size: 17px;
-  }
-  .career-info h3 {
-    font-size: 40px;
-  }
-  .career-info-box p {
-    font-size: 14px;
-  }
-  .career-info-in {
-    width: 45%;
-    gap: 20px;
-  }
-
-  .career-info-box p {
+  .career-card {
     width: 45%;
   }
 }
@@ -168,27 +262,20 @@
 }
 @media only screen and (max-width: 900px) {
   .career-info-box {
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
   }
-  .career-info-in,
-  .career-info-box p {
-    width: 100%;
-    padding-left: 10%;
-    box-sizing: border-box;
+  .career-left-align .career-card,
+  .career-right-align .career-card {
+    width: calc(100% - 40px);
+    margin-left: 40px;
+    margin-right: 0;
+    padding: 25px 30px;
   }
   .career-timeline {
     left: 0%;
   }
   .career-container {
     width: calc(100% - 25px);
-  }
-  .career-info h4 {
-    width: 100%;
-  }
-  .career-role {
-    margin-bottom: 5px;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -201,15 +288,11 @@
     line-height: 45px;
     margin-top: 0px;
   }
-  .career-info-in {
-    gap: 0px;
-  }
-  .career-info h3 {
-    font-size: 33px;
-  }
-  .career-info-in,
-  .career-info-box p {
-    padding-left: 5%;
+  .career-left-align .career-card,
+  .career-right-align .career-card {
+    width: calc(100% - 20px);
+    margin-left: 20px;
+    padding: 20px 25px;
   }
   .career-section {
     padding-top: 90px;
@@ -218,5 +301,123 @@
     align-items: start;
     place-items: inherit;
     justify-content: left;
+  }
+}
+
+/* 3D Animations for empty spaces */
+.career-3d-container {
+  width: 42%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+.career-3d-card {
+  width: 180px;
+  height: 180px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: float 5s ease-in-out infinite alternate;
+}
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate 25s linear infinite;
+}
+.face {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border: 1px dashed rgba(194, 164, 255, 0.35);
+  background: radial-gradient(circle, rgba(194, 164, 255, 0.04) 0%, transparent 80%);
+}
+.front  { transform: rotateY(  0deg) translateZ(90px); }
+.back   { transform: rotateY(180deg) translateZ(90px); }
+.right  { transform: rotateY( 90deg) translateZ(90px); }
+.left   { transform: rotateY(-90deg) translateZ(90px); }
+.top    { transform: rotateX( 90deg) translateZ(90px); }
+.bottom { transform: rotateX(-90deg) translateZ(90px); }
+
+.ring-system {
+  width: 180px;
+  height: 180px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate-system 25s linear infinite;
+}
+.ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid rgba(194, 164, 255, 0.3);
+  border-radius: 50%;
+}
+.ring-1 {
+  transform: rotateY(0deg);
+}
+.ring-2 {
+  transform: rotateX(90deg);
+}
+.ring-3 {
+  transform: rotateY(45deg) rotateX(45deg);
+}
+
+.core-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(0px);
+  width: 35px;
+  height: 35px;
+  background-color: var(--accentColor);
+  border-radius: 50%;
+  filter: blur(15px);
+  opacity: 0.6;
+  box-shadow: 0 0 25px 8px var(--accentColor);
+}
+
+@keyframes rotate {
+  from { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  to { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
+@keyframes rotate-system {
+  from { transform: rotateX(0deg) rotateY(0deg); }
+  to { transform: rotateX(360deg) rotateY(360deg); }
+}
+@keyframes float {
+  0% { transform: translateY(0px) rotateY(-5deg); }
+  100% { transform: translateY(-20px) rotateY(5deg); }
+}
+
+@media only screen and (max-width: 900px) {
+  .career-3d-container {
+    display: none;
+  }
+}
+
+.career-face-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(20px); /* place slightly forward in Z space for 3D visual overlap */
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: pulse-face 4s ease-in-out infinite alternate;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes pulse-face {
+  0% {
+    transform: translate(-50%, -50%) translateZ(20px) scale(1);
+    filter: drop-shadow(0 0 8px rgba(194, 164, 255, 0.4)) brightness(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateZ(20px) scale(1.08);
+    filter: drop-shadow(0 0 18px rgba(194, 164, 255, 0.7)) brightness(1.3);
   }
 }

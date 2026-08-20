@@ -110,6 +110,28 @@
   font-weight: 600;
 }
 
+.work-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+.work-btn {
+  padding: 8px 20px;
+  background-color: transparent;
+  border: 1px solid var(--accentColor);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+.work-btn:hover {
+  background-color: var(--accentColor);
+  color: #fff;
+}
+
 .work-info h4 {
   font-size: 18px;
   font-weight: 400;

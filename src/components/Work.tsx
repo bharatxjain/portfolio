@@ -14,6 +14,8 @@ const Work = () => {
       tools: "Random Forest, Scikit-learn, Python",
       description:
         "Built a predictive ML model using Random Forest and Scikit-learn applying statistical modeling for automated cancer stage prediction achieving 95% accuracy; applied feature engineering, data preprocessing, and hyperparameter tuning via RandomizedSearchCV.",
+      certificateLink: "javascript:void(0)",
+      projectLink: "javascript:void(0)",
     },
     {
       title: "Bank Enterprise Management System",
@@ -21,6 +23,17 @@ const Work = () => {
       tools: "Python, Streamlit, MySQL",
       description:
         "Designed a banking analytics and management system using Python (Streamlit) and MySQL; automated transaction monitoring, account validation, and risk monitoring with data-driven validation and interactive dashboards.",
+      certificateLink: "javascript:void(0)",
+      projectLink: "javascript:void(0)",
+    },
+    {
+      title: "RAG Document Q&A System",
+      category: "Full-Stack AI",
+      tools: "LangChain, FAISS, FastAPI, React, Docker, AWS EC2",
+      description:
+        "Built a full-stack Retrieval-Augmented Generation system using LangChain, FAISS, and FastAPI enabling multi-format document upload with grounded Q&A and cited sources. Deployed a React frontend and containerized Docker backend to production on AWS EC2 with an Nginx reverse proxy and SSL, resolving memory and disk constraints on free-tier infrastructure.",
+      certificateLink: "javascript:void(0)",
+      projectLink: "javascript:void(0)",
     },
   ];
   const [activeIndex, setActiveIndex] = useState(0);
@@ -29,26 +42,41 @@ const Work = () => {
   const workFlexRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    let timeline: any = null;
-    let st: any = null;
+    const workSection = document.querySelector(
+      ".work-section"
+    ) as HTMLElement | null;
 
-    function createTimeline() {
-      const workFlex = document.querySelector(
-        ".work-flex",
-      ) as HTMLElement | null;
-      const workContainer = document.querySelector(
-        ".work-container",
-      ) as HTMLElement | null;
-      const section = document.querySelector(
-        ".work-section",
-      ) as HTMLElement | null;
-      if (!workFlex || !workContainer || !section) return;
+    const workContainer = document.querySelector(
+      ".work-container"
+    ) as HTMLElement | null;
 
-      workFlexRef.current = workFlex;
-      sectionRef.current = section;
+    const workFlex = document.querySelector(
+      ".work-flex"
+    ) as HTMLElement | null;
 
-      const boxes = workFlex.querySelectorAll(".work-box");
-      const n = boxes.length || 1;
+    if (!workSection || !workContainer || !workFlex) return;
+
+    workFlexRef.current = workFlex;
+    sectionRef.current = workSection;
+
+    let timeline: gsap.core.Timeline | null = null;
+    let resizeTimeout: ReturnType<typeof setTimeout>;
+
+    const createTimeline = () => {
+      if (timeline) {
+        timeline.scrollTrigger?.kill();
+        timeline.kill();
+      }
+
+      gsap.set(workFlex, { x: 0 });
+
+      const boxes = Array.from(
+        workFlex.querySelectorAll<HTMLElement>(".work-box")
+      );
+
+      const n = boxes.length;
+
+      if (!n) return;
 
       // compute translate distance based on actual boxes (ignore large pseudo-elements)
       const lastBox = boxes[boxes.length - 1] as HTMLElement | undefined;
@@ -61,23 +89,22 @@ const Work = () => {
       }
       translateRef.current = translateX;
 
-      // cleanup previous timeline/scrolltriggers
-      if (timeline) {
-        timeline.kill();
-      }
-      ScrollTrigger.getAll().forEach((s) => s.kill());
-
       const snapPoints =
-        n > 1 ? Array.from({ length: n }, (_, i) => i / (n - 1)) : [0];
+        n > 1
+          ? Array.from({ length: n }, (_, i) => i / (n - 1))
+          : [0];
 
       timeline = gsap.timeline({
         scrollTrigger: {
-          trigger: ".work-section",
+          trigger: workSection,
           start: "top top",
           end: `+=${translateX}`,
-          scrub: true,
+          scrub: 1,
           pin: true,
           anticipatePin: 1,
+
+          invalidateOnRefresh: true,
+
           snap: {
             snapTo: (progress: number) => {
               // find nearest snap point
@@ -92,73 +119,147 @@ const Work = () => {
               }
               return nearest;
             },
-            duration: 0.4,
+            duration: {
+              min: 0.2,
+              max: 0.5,
+            },
             ease: "power2.out",
           },
-          onUpdate: (self: any) => {
-            const prog = self.progress || 0;
-            const idx = Math.round((n - 1) * prog);
-            setActiveIndex(Math.min(Math.max(idx, 0), n - 1));
+
+          onUpdate: (self) => {
+            const progress = self.progress;
+
+            const index =
+              n > 1
+                ? Math.round((n - 1) * progress)
+                : 0;
+
+            setActiveIndex(
+              Math.min(Math.max(index, 0), n - 1)
+            );
           },
         },
       });
 
-      timeline.to(".work-flex", {
+      timeline.to(workFlex, {
         x: -translateX,
         ease: "none",
       });
-      st = timeline.scrollTrigger;
-    }
+
+      ScrollTrigger.refresh();
+    };
 
     createTimeline();
 
-    // drag support: map horizontal pointer movements to vertical scroll
+    /*
+     * Drag support
+     */
     let pointerActive = false;
     let startX = 0;
     let startScroll = 0;
 
     const onPointerDown = (e: PointerEvent) => {
-      const workFlex = workFlexRef.current;
-      const section = sectionRef.current;
-      if (!workFlex || !section) return;
+      const target = e.target as HTMLElement;
+
+      /*
+       * Only allow dragging inside the Work section.
+       */
+      if (!workSection.contains(target)) return;
+
+      if (target.closest("button") || target.closest("a")) return;
+
       pointerActive = true;
       startX = e.clientX;
       startScroll = window.scrollY;
-      (e.target as HTMLElement).setPointerCapture?.((e as any).pointerId);
+
+      target.setPointerCapture?.(e.pointerId);
     };
 
     const onPointerMove = (e: PointerEvent) => {
       if (!pointerActive) return;
+
       const dx = e.clientX - startX;
-      // map horizontal delta to vertical scroll delta (invert sign)
-      const dy = -dx;
-      window.scrollTo({ top: startScroll + dy, behavior: "auto" });
+
+      /*
+       * Horizontal drag → vertical page scroll
+       */
+      const scrollAmount = -dx;
+
+      window.scrollTo({
+        top: startScroll + scrollAmount,
+        behavior: "auto",
+      });
     };
 
     const onPointerUp = (e: PointerEvent) => {
       pointerActive = false;
+
+      const target = e.target as HTMLElement;
+
       try {
-        (e.target as HTMLElement).releasePointerCapture?.((e as any).pointerId);
-      } catch {}
+        target.releasePointerCapture?.(e.pointerId);
+      } catch {
+        // Ignore pointer capture errors
+      }
     };
 
-    document.addEventListener("pointerdown", onPointerDown);
-    document.addEventListener("pointermove", onPointerMove);
-    document.addEventListener("pointerup", onPointerUp);
+    workSection.addEventListener(
+      "pointerdown",
+      onPointerDown
+    );
 
+    workSection.addEventListener(
+      "pointermove",
+      onPointerMove
+    );
+
+    workSection.addEventListener(
+      "pointerup",
+      onPointerUp
+    );
+
+    /*
+     * Resize
+     */
     const resizeHandler = () => {
-      createTimeline();
+      clearTimeout(resizeTimeout);
+
+      resizeTimeout = setTimeout(() => {
+        createTimeline();
+        ScrollTrigger.refresh();
+      }, 150);
     };
 
     window.addEventListener("resize", resizeHandler);
 
+    /*
+     * Cleanup
+     */
     return () => {
-      if (timeline) timeline.kill();
-      ScrollTrigger.getAll().forEach((s) => s.kill());
-      document.removeEventListener("pointerdown", onPointerDown);
-      document.removeEventListener("pointermove", onPointerMove);
-      document.removeEventListener("pointerup", onPointerUp);
-      window.removeEventListener("resize", resizeHandler);
+      clearTimeout(resizeTimeout);
+
+      timeline?.scrollTrigger?.kill();
+      timeline?.kill();
+
+      workSection.removeEventListener(
+        "pointerdown",
+        onPointerDown
+      );
+
+      workSection.removeEventListener(
+        "pointermove",
+        onPointerMove
+      );
+
+      workSection.removeEventListener(
+        "pointerup",
+        onPointerUp
+      );
+
+      window.removeEventListener(
+        "resize",
+        resizeHandler
+      );
     };
   }, []);
   const scrollToProject = (idx: number) => {
@@ -217,7 +318,7 @@ const Work = () => {
           {projects.map((project, index) => (
             <div className="work-box" key={index}>
               <div className="work-media">
-                <WorkImage image="/images/placeholder.webp" alt="" />
+                <WorkImage image={`${import.meta.env.BASE_URL}images/placeholder.webp`} alt="" />
                 <div className="work-desc">
                   <p>{project.description}</p>
                 </div>
@@ -234,6 +335,13 @@ const Work = () => {
                 </div>
                 <h4>Tools and features</h4>
                 <p>{project.tools}</p>
+                <div className="work-buttons">
+                  {project.projectLink && (
+                    <a href={project.projectLink} target="_blank" rel="noopener noreferrer" className="work-btn">
+                      View Project
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           ))}
