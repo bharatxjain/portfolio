@@ -73,76 +73,42 @@ const Work = () => {
       const boxes = Array.from(
         workFlex.querySelectorAll<HTMLElement>(".work-box")
       );
-
       const n = boxes.length;
-
       if (!n) return;
 
-      // compute translate distance based on actual boxes (ignore large pseudo-elements)
-      const lastBox = boxes[boxes.length - 1] as HTMLElement | undefined;
-      const workContainerRect = workContainer.getBoundingClientRect();
-      let translateX = 0;
-      if (lastBox) {
-        const lastRect = lastBox.getBoundingClientRect();
-        // distance to shift so last box right aligns with container right
-        translateX = Math.max(0, lastRect.right - workContainerRect.right);
-      }
-      translateRef.current = translateX;
+      const firstBox = boxes[0];
+      const lastBox = boxes[n - 1];
 
-      const snapPoints =
-        n > 1
-          ? Array.from({ length: n }, (_, i) => i / (n - 1))
-          : [0];
+      const firstRect = firstBox.getBoundingClientRect();
+      const lastRect = lastBox.getBoundingClientRect();
+      const containerWidth = workContainer.clientWidth;
+
+      // Distance from left of first box to right of last box
+      const totalBoxesWidth = lastRect.right - firstRect.left;
+
+      // Translate distance: just enough to bring last box right edge into view
+      const translateX = Math.max(0, totalBoxesWidth - containerWidth + 80);
+      translateRef.current = translateX;
 
       timeline = gsap.timeline({
         scrollTrigger: {
           trigger: workSection,
           start: "top top",
-          end: `+=${translateX}`,
-          scrub: 1,
+          end: () => `+=${translateRef.current}`,
+          scrub: 0.5,
           pin: true,
           anticipatePin: 1,
-
           invalidateOnRefresh: true,
-
-          snap: {
-            snapTo: (progress: number) => {
-              // find nearest snap point
-              let nearest = snapPoints[0];
-              let minDiff = Math.abs(progress - nearest);
-              for (let i = 1; i < snapPoints.length; i++) {
-                const d = Math.abs(progress - snapPoints[i]);
-                if (d < minDiff) {
-                  minDiff = d;
-                  nearest = snapPoints[i];
-                }
-              }
-              return nearest;
-            },
-            duration: {
-              min: 0.2,
-              max: 0.5,
-            },
-            ease: "power2.out",
-          },
-
           onUpdate: (self) => {
             const progress = self.progress;
-
-            const index =
-              n > 1
-                ? Math.round((n - 1) * progress)
-                : 0;
-
-            setActiveIndex(
-              Math.min(Math.max(index, 0), n - 1)
-            );
+            const index = n > 1 ? Math.round((n - 1) * progress) : 0;
+            setActiveIndex(Math.min(Math.max(index, 0), n - 1));
           },
         },
       });
 
       timeline.to(workFlex, {
-        x: -translateX,
+        x: () => -translateRef.current,
         ease: "none",
       });
 
@@ -151,115 +117,26 @@ const Work = () => {
 
     createTimeline();
 
-    /*
-     * Drag support
-     */
-    let pointerActive = false;
-    let startX = 0;
-    let startScroll = 0;
+    // Refresh after layout and images settle
+    const timer = setTimeout(() => {
+      createTimeline();
+    }, 500);
 
-    const onPointerDown = (e: PointerEvent) => {
-      const target = e.target as HTMLElement;
-
-      /*
-       * Only allow dragging inside the Work section.
-       */
-      if (!workSection.contains(target)) return;
-
-      if (target.closest("button") || target.closest("a")) return;
-
-      pointerActive = true;
-      startX = e.clientX;
-      startScroll = window.scrollY;
-
-      target.setPointerCapture?.(e.pointerId);
-    };
-
-    const onPointerMove = (e: PointerEvent) => {
-      if (!pointerActive) return;
-
-      const dx = e.clientX - startX;
-
-      /*
-       * Horizontal drag → vertical page scroll
-       */
-      const scrollAmount = -dx;
-
-      window.scrollTo({
-        top: startScroll + scrollAmount,
-        behavior: "auto",
-      });
-    };
-
-    const onPointerUp = (e: PointerEvent) => {
-      pointerActive = false;
-
-      const target = e.target as HTMLElement;
-
-      try {
-        target.releasePointerCapture?.(e.pointerId);
-      } catch {
-        // Ignore pointer capture errors
-      }
-    };
-
-    workSection.addEventListener(
-      "pointerdown",
-      onPointerDown
-    );
-
-    workSection.addEventListener(
-      "pointermove",
-      onPointerMove
-    );
-
-    workSection.addEventListener(
-      "pointerup",
-      onPointerUp
-    );
-
-    /*
-     * Resize
-     */
     const resizeHandler = () => {
       clearTimeout(resizeTimeout);
-
       resizeTimeout = setTimeout(() => {
         createTimeline();
-        ScrollTrigger.refresh();
       }, 150);
     };
 
     window.addEventListener("resize", resizeHandler);
 
-    /*
-     * Cleanup
-     */
     return () => {
+      clearTimeout(timer);
       clearTimeout(resizeTimeout);
-
       timeline?.scrollTrigger?.kill();
       timeline?.kill();
-
-      workSection.removeEventListener(
-        "pointerdown",
-        onPointerDown
-      );
-
-      workSection.removeEventListener(
-        "pointermove",
-        onPointerMove
-      );
-
-      workSection.removeEventListener(
-        "pointerup",
-        onPointerUp
-      );
-
-      window.removeEventListener(
-        "resize",
-        resizeHandler
-      );
+      window.removeEventListener("resize", resizeHandler);
     };
   }, []);
   const scrollToProject = (idx: number) => {

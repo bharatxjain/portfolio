@@ -83,13 +83,14 @@
 .work-flex::before,
 .work-flex::after {
   content: "";
-  width: calc(50000vw);
+  width: 100vw;
   height: 1px;
   background-color: #363636;
   position: absolute;
   left: 50%;
   top: 0;
   transform: translateX(-50%);
+  pointer-events: none;
 }
 .work-flex::after {
   top: 100%;

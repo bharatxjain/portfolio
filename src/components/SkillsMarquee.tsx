@@ -97,9 +97,6 @@ const SkillsMarquee = () => {
             </div>
           ))}
         </div>
-        <div className="skills-brand">
-          <span>@bharatxjain</span>
-        </div>
       </div>
     </div>
   );

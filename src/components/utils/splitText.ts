@@ -12,7 +12,12 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 export default function setSplitText() {
   ScrollTrigger.config({ ignoreMobileResize: true });
-  if (window.innerWidth < 900) return;
+  if (window.innerWidth < 900) {
+    document.querySelectorAll(".para, .title").forEach((el) => {
+      gsap.set(el, { autoAlpha: 1, opacity: 1, visibility: "visible", y: 0, rotate: 0 });
+    });
+    return;
+  }
   const paras: NodeListOf<ParaElement> = document.querySelectorAll(".para");
   const titles: NodeListOf<ParaElement> = document.querySelectorAll(".title");
 

@@ -1,7 +1,40 @@
 .contact-section {
   margin: auto;
   padding-bottom: 100px;
-  margin-top: 100px;
+  margin-top: 60px;
+}
+
+/* Footer Brand Signature */
+.footer-brand {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.footer-brand span {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 6px;
+
+  font-size: clamp(32px, 10vw, 180px);
+
+  background: linear-gradient(0deg, #7f40ff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 .contact-section h3 {
   font-size: 60px;
