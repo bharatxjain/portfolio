@@ -1,29 +1,35 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import "./styles/WhatIDo.css";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const WhatIDo = () => {
   const containerRef = useRef<(HTMLDivElement | null)[]>([]);
   const setRef = (el: HTMLDivElement | null, index: number) => {
     containerRef.current[index] = el;
   };
-  useEffect(() => {
-    if (ScrollTrigger.isTouch) {
-      containerRef.current.forEach((container) => {
-        if (container) {
-          container.classList.remove("what-noTouch");
-          container.addEventListener("click", () => handleClick(container));
+
+  const handleCardClick = (index: number) => {
+    const clickedCard = containerRef.current[index];
+    if (!clickedCard) return;
+
+    const isActive = clickedCard.classList.contains("what-content-active");
+
+    containerRef.current.forEach((card) => {
+      if (card) {
+        card.classList.remove("what-content-active");
+        card.classList.remove("what-sibling");
+      }
+    });
+
+    if (!isActive) {
+      clickedCard.classList.add("what-content-active");
+      containerRef.current.forEach((card) => {
+        if (card && card !== clickedCard) {
+          card.classList.add("what-sibling");
         }
       });
     }
-    return () => {
-      containerRef.current.forEach((container) => {
-        if (container) {
-          container.removeEventListener("click", () => handleClick(container));
-        }
-      });
-    };
-  }, []);
+  };
+
   return (
     <div className="whatIDO">
       <div className="what-box">
@@ -59,8 +65,9 @@ const WhatIDo = () => {
             </svg>
           </div>
           <div
-            className="what-content what-noTouch"
+            className="what-content"
             ref={(el) => setRef(el, 0)}
+            onClick={() => handleCardClick(0)}
           >
             <div className="what-border1">
               <svg height="100%">
@@ -107,8 +114,9 @@ const WhatIDo = () => {
             </div>
           </div>
           <div
-            className="what-content what-noTouch"
+            className="what-content"
             ref={(el) => setRef(el, 1)}
+            onClick={() => handleCardClick(1)}
           >
             <div className="what-border1">
               <svg height="100%">
@@ -151,18 +159,3 @@ const WhatIDo = () => {
 };
 
 export default WhatIDo;
-
-function handleClick(container: HTMLDivElement) {
-  container.classList.toggle("what-content-active");
-  container.classList.remove("what-sibling");
-  if (container.parentElement) {
-    const siblings = Array.from(container.parentElement.children);
-
-    siblings.forEach((sibling) => {
-      if (sibling !== container) {
-        sibling.classList.remove("what-content-active");
-        sibling.classList.toggle("what-sibling");
-      }
-    });
-  }
-}

@@ -1,34 +1,47 @@
 .header {
   display: flex;
   max-width: var(--cMaxWidth);
-  width: var(--cWidth);
+  width: min(94%, 1200px);
   justify-content: space-between;
-  padding: 20px 0px;
-  margin-bottom: -100px;
-  box-sizing: border-box;
+  align-items: center;
+  padding: 10px 18px;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  top: 0;
+  top: 14px;
   z-index: 9999;
+  box-sizing: border-box;
+
+  background: rgba(18, 14, 26, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 40px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
 }
 .header ul {
-  font-size: 12px;
+  font-size: 11px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   margin: 0;
   padding: 0;
   list-style: none;
-  column-gap: 40px;
-  row-gap: 8px;
-  align-items: end;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 .header ul li {
   margin-left: 0px;
   letter-spacing: 1px;
-  color: #ccc;
+  color: #ded9e5;
   font-weight: 600;
   cursor: pointer;
+  transition: color 0.2s ease;
+}
+.header ul li:hover {
+  color: #c481ff;
 }
 .navbar-connect {
   position: absolute;
@@ -39,26 +52,37 @@
   font-size: 15px;
   letter-spacing: 1px;
   font-weight: 500;
+  color: #cfcfcf;
 }
 .navbar-title {
   font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.2px;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  color: #ffffff;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+.navbar-title:hover {
+  color: #c481ff;
 }
 @media only screen and (min-width: 500px) {
   .header {
-    padding: 20px 0px;
+    padding: 12px 24px;
+    top: 18px;
   }
   .header ul {
-    flex-direction: row;
-    align-items: center;
-    font-size: 14px;
-  }
-  .header ul li {
-    color: #eae5ec;
+    gap: 20px;
+    font-size: 13px;
   }
   .navbar-title {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 @media only screen and (min-width: 900px) {
@@ -68,16 +92,17 @@
 }
 @media only screen and (min-width: 1200px) {
   .header {
-    padding: 35px 0px;
+    padding: 14px 28px;
+    top: 24px;
   }
   .header ul {
-    column-gap: 80px;
-    font-size: 16px;
+    gap: 32px;
+    font-size: 14px;
   }
   .navbar-connect {
-    font-size: 16px;
+    font-size: 15px;
   }
   .navbar-title {
-    font-size: 18px;
+    font-size: 16px;
   }
 }

@@ -44,10 +44,11 @@
   height: 33%;
   min-height: 50%;
   transition: 0.5s;
-  /* border: 0.5px dashed rgba(255, 255, 255, 0.3); */
   position: relative;
   padding: 50px;
   box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
 }
 
 .what-noTouch:hover,

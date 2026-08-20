@@ -7,6 +7,7 @@
   width: min(100%, 1450px);
   margin: 0 auto;
   padding: 0 30px 0 0;
+  box-sizing: border-box;
 }
 
 .about-me {
@@ -95,67 +96,79 @@
   text-align: right;
 }
 
-/* ===================== Mobile ===================== */
+/* ===================== Mobile & Small Tablet ===================== */
 
-@media only screen and (max-width: 599px) {
+@media only screen and (max-width: 900px) {
   .about-section {
     width: 100%;
-    padding: 20px;
-    align-items: center;
+    max-width: 100%;
+    padding: 24px 20px;
+    align-items: flex-start;
+    margin: 0;
   }
 
   .about-me,
   .education {
     width: 100%;
     max-width: 100%;
-    align-self: center;
+    align-self: flex-start;
     padding-top: 0;
   }
 
   .about-me h3,
   .education .title {
-    text-align: center;
+    text-align: left;
+    font-size: 18px;
+    letter-spacing: 4px;
   }
 
   .about-me p {
     font-size: 15px;
-    line-height: 24px;
+    line-height: 26px;
+    color: #e0e0e0;
   }
 
   .edu-item {
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+    padding: 14px 0;
+    align-items: flex-start;
+  }
+
+  .edu-left {
+    width: 100%;
+  }
+
+  .edu-institution {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .edu-degree {
+    font-size: 14px;
+    color: #d0d0d0;
+    margin-top: 2px;
+  }
+
+  .edu-meta {
+    font-size: 14px;
+    color: #a8a8a8;
+    margin-top: 2px;
   }
 
   .edu-date {
-    margin-top: 6px;
+    margin-top: 4px;
     text-align: left;
-  }
-}
-
-/* ===================== Tablet ===================== */
-
-@media only screen and (min-width: 600px) and (max-width: 1024px) {
-  .about-section {
-    width: min(100%, 1200px);
-    padding-right: 30px;
-  }
-
-  .about-me,
-  .education {
-    width: 520px;
-    max-width: 100%;
-  }
-
-  .about-me p {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 13px;
+    color: #c481ff;
+    font-weight: 500;
   }
 }
 
 /* ===================== Desktop ===================== */
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 901px) {
   .about-section {
     width: min(100%, 1500px);
     padding-right: 20px;

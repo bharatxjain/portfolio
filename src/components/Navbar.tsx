@@ -27,14 +27,32 @@ const Navbar = () => {
     links.forEach((elem) => {
       let element = elem as HTMLAnchorElement;
       element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
-          e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          smoother.scrollTo(section, true, "top top");
+        e.preventDefault();
+        let section = element.getAttribute("data-href");
+        if (section) {
+          if (window.innerWidth > 1024 && smoother) {
+            smoother.scrollTo(section, true, "top top");
+          } else {
+            let target = document.querySelector(section);
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          }
         }
       });
     });
+    let titleLink = document.querySelector(".navbar-title") as HTMLAnchorElement;
+    if (titleLink) {
+      titleLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (window.innerWidth > 1024 && smoother) {
+          smoother.scrollTo(0, true, "top top");
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      });
+    }
+
     window.addEventListener("resize", () => {
       ScrollSmoother.refresh(true);
     });
@@ -42,7 +60,7 @@ const Navbar = () => {
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
+        <a href="#landingDiv" className="navbar-title" data-cursor="disable">
           Bharat Jain
         </a>
         <a
