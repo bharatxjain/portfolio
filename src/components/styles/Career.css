@@ -368,59 +368,24 @@
 
 /* Mobile Overrides for 3D Shape and Face on Right-Hand Side */
 @media only screen and (max-width: 900px) {
-  .career-info-box {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 40px;
-    position: relative;
+  .career-3d-container {
+    display: none !important;
   }
-  .career-right-align {
-    flex-direction: row-reverse;
+  .career-info-box {
+    margin-bottom: 40px;
   }
   .career-left-align .career-card,
   .career-right-align .career-card {
-    width: calc(100% - 110px);
-    margin-left: 20px;
+    width: calc(100% - 40px);
+    margin-left: 40px;
     margin-right: 0;
-    padding: 18px 20px;
+    padding: 25px 30px;
   }
   .career-timeline {
     left: 0%;
   }
   .career-container {
-    width: calc(100% - 15px);
-  }
-  .career-3d-container {
-    display: flex;
-    width: 90px;
-    height: 90px;
-    margin-left: auto;
-    margin-right: 5px;
-    flex-shrink: 0;
-  }
-  .career-3d-card,
-  .cube,
-  .ring-system {
-    width: 80px;
-    height: 80px;
-  }
-  .face {
-    width: 80px;
-    height: 80px;
-  }
-  .front  { transform: rotateY(  0deg) translateZ(40px); }
-  .back   { transform: rotateY(180deg) translateZ(40px); }
-  .right  { transform: rotateY( 90deg) translateZ(40px); }
-  .left   { transform: rotateY(-90deg) translateZ(40px); }
-  .top    { transform: rotateX( 90deg) translateZ(40px); }
-  .bottom { transform: rotateX(-90deg) translateZ(40px); }
-
-  .career-face-glow {
-    width: 45px;
-    height: 45px;
+    width: calc(100% - 25px);
   }
 }
 

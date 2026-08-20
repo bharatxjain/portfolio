@@ -39,6 +39,21 @@ const WhatIDo = () => {
             I<span className="do-h2"> DO</span>
           </div>
         </h2>
+        <div className="what-3d-mobile">
+          <div className="what-3d-card">
+            <div className="ring-system">
+              <div className="ring ring-1"></div>
+              <div className="ring ring-2"></div>
+              <div className="ring ring-3"></div>
+              <div className="core-glow"></div>
+            </div>
+            <img
+              src={`${import.meta.env.BASE_URL}images/face.png`}
+              className="what-face-glow"
+              alt="Bharat Jain"
+            />
+          </div>
+        </div>
       </div>
       <div className="what-box">
         <div className="what-box-in">

@@ -318,24 +318,20 @@
   .whatIDO {
     flex-direction: column;
   }
-  .what-box h2 {
-    margin: 50px 0;
-    font-size: 55px;
-    line-height: 53px;
-  }
   .what-box:first-child {
-    justify-content: left;
-  }
-  .what-box:last-child {
-    height: 650px;
-  }
-  .what-box {
-    width: 500px;
-    max-width: calc(100% - 50px);
-    margin: auto;
-  }
-  .what-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+    max-width: calc(100% - 30px);
+    margin: 30px auto 20px auto;
+  }
+  .what-box h2 {
+    margin: 0;
+    font-size: clamp(30px, 7vw, 48px);
+    line-height: 1.05;
+    white-space: nowrap;
   }
   .what-box-in {
     margin-left: 0px;
@@ -354,6 +350,7 @@
   }
   .what-content {
     padding: 30px;
+    width: 100%;
   }
   .what-content p {
     font-size: 11px;
@@ -375,6 +372,96 @@
     font-size: 25px;
   }
 }
+
+/* 3D Mobile Animated Face Container */
+.what-3d-mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+}
+
+@media only screen and (min-width: 901px) {
+  .what-3d-mobile {
+    display: none;
+  }
+}
+
+.what-3d-card {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: whatFloat 5s ease-in-out infinite alternate;
+}
+.what-3d-card .ring-system {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: whatRotateSystem 25s linear infinite;
+}
+.what-3d-card .ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid rgba(194, 164, 255, 0.4);
+  border-radius: 50%;
+}
+.what-3d-card .ring-1 { transform: rotateY(0deg); }
+.what-3d-card .ring-2 { transform: rotateX(90deg); }
+.what-3d-card .ring-3 { transform: rotateY(45deg) rotateX(45deg); }
+
+.what-3d-card .core-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25px;
+  height: 25px;
+  background-color: var(--accentColor);
+  border-radius: 50%;
+  filter: blur(10px);
+  opacity: 0.6;
+  box-shadow: 0 0 20px 6px var(--accentColor);
+}
+
+.what-face-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(15px);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: whatPulseFace 4s ease-in-out infinite alternate;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes whatRotateSystem {
+  from { transform: rotateX(0deg) rotateY(0deg); }
+  to { transform: rotateX(360deg) rotateY(360deg); }
+}
+@keyframes whatFloat {
+  0% { transform: translateY(0px) rotateY(-5deg); }
+  100% { transform: translateY(-10px) rotateY(5deg); }
+}
+@keyframes whatPulseFace {
+  0% {
+    transform: translate(-50%, -50%) translateZ(15px) scale(1);
+    filter: drop-shadow(0 0 6px rgba(194, 164, 255, 0.5)) brightness(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateZ(15px) scale(1.08);
+    filter: drop-shadow(0 0 14px rgba(194, 164, 255, 0.8)) brightness(1.3);
+  }
+}
+
 @media only screen and (max-width: 550px) {
   .whatIDO {
     place-items: inherit;
@@ -382,7 +469,7 @@
     justify-content: left;
   }
   .what-box {
-    max-width: calc(100% - 25px);
+    max-width: calc(100% - 20px);
     margin: 0;
   }
 }
