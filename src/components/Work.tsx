@@ -15,7 +15,7 @@ const Work = () => {
       description:
         "Built a predictive ML model using Random Forest and Scikit-learn applying statistical modeling for automated cancer stage prediction achieving 95% accuracy; applied feature engineering, data preprocessing, and hyperparameter tuning via RandomizedSearchCV.",
       certificateLink: "javascript:void(0)",
-      projectLink: "javascript:void(0)",
+      projectLink: "https://github.com/bharatxjain/lung-cancer-prediction",
     },
     {
       title: "Bank Enterprise Management System",
@@ -24,7 +24,7 @@ const Work = () => {
       description:
         "Designed a banking analytics and management system using Python (Streamlit) and MySQL; automated transaction monitoring, account validation, and risk monitoring with data-driven validation and interactive dashboards.",
       certificateLink: "javascript:void(0)",
-      projectLink: "javascript:void(0)",
+      projectLink: "https://github.com/bharatxjain/Bank-Management",
     },
     {
       title: "RAG Document Q&A System",
@@ -33,7 +33,7 @@ const Work = () => {
       description:
         "Built a full-stack Retrieval-Augmented Generation system using LangChain, FAISS, and FastAPI enabling multi-format document upload with grounded Q&A and cited sources. Deployed a React frontend and containerized Docker backend to production on AWS EC2 with an Nginx reverse proxy and SSL, resolving memory and disk constraints on free-tier infrastructure.",
       certificateLink: "javascript:void(0)",
-      projectLink: "javascript:void(0)",
+      projectLink: "https://github.com/bharatxjain/RAG_Full_Stack",
     },
   ];
   const [activeIndex, setActiveIndex] = useState(0);
