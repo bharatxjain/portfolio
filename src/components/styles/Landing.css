@@ -159,13 +159,13 @@
 .landing-intro {
   position: absolute;
   z-index: 9;
-  top: 12%;
-  left: 0;
+  top: 10%;
+  left: 5%;
 }
 .landing-intro h2 {
   margin: 0;
   color: var(--accentColor);
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 300;
   letter-spacing: 2px;
 }
@@ -174,23 +174,19 @@
   margin: 0;
   letter-spacing: 2px;
   font-size: 28px;
-  line-height: 28px;
+  line-height: 32px;
   font-weight: 500;
   font-family: "Geist", sans-serif;
 }
 
-/* .landing-intro h1 span {
-   font-weight: 200; 
-} */
-
 .landing-info {
   position: absolute;
-  right: 50%;
-  transform: translateX(50%);
-  bottom: 40px;
-  top: inherit;
+  left: 5%;
+  bottom: 30px;
+  top: auto;
   z-index: 9;
-  margin-left: 20px;
+  margin: 0;
+  text-align: left;
 }
 .landing-info h3 {
   font-size: 16px;
@@ -201,12 +197,11 @@
 }
 .landing-info h2 {
   margin: 0;
-  margin-top: -8px;
-  margin-left: 20px;
+  margin-top: 4px;
   font-family: "Geist", sans-serif;
   font-weight: 600;
   font-size: 20px;
-  line-height: 24px;
+  line-height: 26px;
   position: relative;
   display: flex;
   flex-wrap: nowrap;
@@ -217,16 +212,17 @@
 .landing-h2-info-1 {
   position: absolute;
   top: 0;
+  left: 0;
 }
 h2.landing-info-h2 {
   color: #c481ff;
-  font-size: 26px;
-  width: 120%;
+  font-size: 24px;
+  width: 100%;
   margin: 0;
+  margin-top: 4px;
   font-family: "Geist", sans-serif;
   font-weight: 600;
   position: relative;
-  margin-left: -5px;
   white-space: nowrap;
 }
 .landing-h2-1,
@@ -238,6 +234,7 @@ h2.landing-info-h2 {
 .landing-h2-2 {
   position: absolute;
   top: 0;
+  left: 0;
 }
 .landing-info-h2::after {
   content: "";
@@ -267,15 +264,15 @@ h2.landing-info-h2 {
     font-size: 18px;
   }
   .landing-intro h1 {
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 32px;
+    line-height: 36px;
   }
   .landing-info h2 {
-    font-size: 35px;
-    line-height: 40px;
+    font-size: 24px;
+    line-height: 30px;
   }
   h2.landing-info-h2 {
-    font-size: 38px;
+    font-size: 30px;
   }
 }
 @media screen and (min-width: 768px) {
@@ -283,21 +280,21 @@ h2.landing-info-h2 {
     height: 80vh;
   }
   .landing-intro h2 {
-    font-size: 25px;
+    font-size: 22px;
   }
   .landing-intro h1 {
-    font-size: 40px;
-    line-height: 35px;
+    font-size: 42px;
+    line-height: 44px;
   }
   .landing-info h3 {
-    font-size: 25px;
+    font-size: 22px;
   }
   .landing-info h2 {
-    font-size: 45px;
-    line-height: 42px;
+    font-size: 32px;
+    line-height: 38px;
   }
   h2.landing-info-h2 {
-    font-size: 55px;
+    font-size: 40px;
   }
 }
 @media screen and (min-width: 1025px) {
@@ -315,8 +312,8 @@ h2.landing-info-h2 {
 
   .landing-intro {
     top: 50%;
-    left: auto;
-    right: 66%;
+    left: 5%;
+    right: auto;
     transform: translate(0%, -50%);
   }
 
@@ -327,15 +324,15 @@ h2.landing-info-h2 {
     text-align: left;
     transform: translate(0%, -50%);
     right: auto;
-    left: 66%;
+    left: 65%;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .landing-intro {
     top: 50%;
-    left: auto;
-    right: 70%;
+    left: 8%;
+    right: auto;
     transform: translate(0%, -50%);
   }
 
@@ -346,25 +343,25 @@ h2.landing-info-h2 {
     text-align: left;
     transform: translate(0%, -50%);
     right: auto;
-    left: 70%;
+    left: 65%;
   }
 }
 @media screen and (min-width: 1600px) {
   .landing-intro h2 {
-    font-size: 35px;
+    font-size: 30px;
   }
   .landing-intro h1 {
-    font-size: 60px;
-    line-height: 55px;
+    font-size: 56px;
+    line-height: 58px;
   }
   .landing-info h3 {
-    font-size: 35px;
+    font-size: 30px;
   }
   .landing-info h2 {
-    font-size: 65px;
-    line-height: 62px;
+    font-size: 44px;
+    line-height: 50px;
   }
   h2.landing-info-h2 {
-    font-size: 75px;
+    font-size: 54px;
   }
 }
