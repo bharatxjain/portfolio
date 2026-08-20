@@ -1,6 +1,40 @@
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./styles/Career.css";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Career = () => {
+  useEffect(() => {
+    const timelineEl = document.querySelector(".career-timeline");
+    const infoEl = document.querySelector(".career-info");
+    if (!timelineEl || !infoEl) return;
+
+    gsap.set(timelineEl, { opacity: 1 });
+
+    const anim = gsap.fromTo(
+      timelineEl,
+      { height: "0%", maxHeight: "0%" },
+      {
+        height: "100%",
+        maxHeight: "100%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: infoEl,
+          start: "top 85%",
+          end: "bottom 15%",
+          scrub: 0.5,
+          invalidateOnRefresh: true,
+        },
+      }
+    );
+
+    return () => {
+      anim.scrollTrigger?.kill();
+      anim.kill();
+    };
+  }, []);
   return (
     <div className="career-section section-container">
       <div className="career-container">

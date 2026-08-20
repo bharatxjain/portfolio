@@ -1,34 +1,38 @@
 .contact-section {
   margin: auto;
-  padding-bottom: 100px;
-  margin-top: 60px;
+  padding-bottom: 40px;
+  margin-top: 30px;
 }
 
 /* Footer Brand Signature */
 .footer-brand {
   width: 100%;
+  max-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: 40px;
-  margin-bottom: 50px;
+  margin-top: 15px;
+  margin-bottom: 20px;
   pointer-events: none;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .footer-brand span {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 10px;
   text-align: center;
+  white-space: nowrap;
+  box-sizing: border-box;
 
   font-weight: 700;
   line-height: 1;
-  letter-spacing: 6px;
+  letter-spacing: clamp(1px, 0.4vw, 4px);
 
-  font-size: clamp(32px, 10vw, 180px);
+  font-size: clamp(28px, 7.5vw, 135px);
 
   background: linear-gradient(0deg, #7f40ff, #ffffff);
   -webkit-background-clip: text;
@@ -105,21 +109,29 @@ a.contact-social {
   }
 }
 @media only screen and (max-width: 900px) {
+  .footer-brand span {
+    font-size: clamp(24px, 7.5vw, 180px);
+    letter-spacing: 2px;
+    padding: 0 5px;
+    box-sizing: border-box;
+  }
   .contact-flex {
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
   }
   .contact-flex p {
     margin-bottom: 0px;
   }
   .contact-flex h4 {
-    margin-top: 20px;
+    margin-top: 15px;
   }
   .contact-section {
-    margin-top: 50px;
-    padding-bottom: 50px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
   }
   .contact-container {
-    width: calc(100% - 25px);
+    width: calc(100% - 30px);
+    margin: 0 auto;
   }
 }

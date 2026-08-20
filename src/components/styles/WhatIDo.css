@@ -315,14 +315,27 @@
   }
 }
 @media only screen and (max-width: 900px) {
+  .what-section {
+    height: auto !important;
+    padding-bottom: 60px;
+    position: relative !important;
+    transform: none !important;
+    margin-top: 40px !important;
+  }
   .whatIDO {
     flex-direction: column;
     width: 100%;
+    height: auto !important;
+    position: relative !important;
+    transform: none !important;
+    margin-top: 0 !important;
   }
   .what-box {
     width: calc(100% - 40px);
     max-width: calc(100% - 40px);
     margin: 0 auto;
+    height: auto;
+    transform: none !important;
   }
   .what-box:first-child {
     display: flex;
@@ -332,17 +345,22 @@
     width: 100%;
     max-width: calc(100% - 30px);
     margin: 30px auto 20px auto;
+    transform: none !important;
   }
   .what-box h2 {
     margin: 0;
     font-size: clamp(30px, 7vw, 48px);
     line-height: 1.05;
     white-space: nowrap;
+    transform: none !important;
   }
   .what-box-in {
+    display: flex !important;
     width: 100%;
     margin-left: 0px;
-    height: 600px;
+    height: auto;
+    min-height: 420px;
+    transform: none !important;
   }
   .what-border1 svg {
     width: 100%;

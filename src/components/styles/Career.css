@@ -186,18 +186,19 @@
 }
 .career-timeline {
   position: absolute;
-  top: -50px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 3px;
-  height: 100%;
-  background-image: linear-gradient(
-    to top,
-    #aa42ff 20%,
-    var(--accentColor) 50%,
-    transparent 95%
-  );
+  height: 0%;
   max-height: 0%;
+  background-image: linear-gradient(
+    to bottom,
+    var(--accentColor) 0%,
+    #aa42ff 80%,
+    transparent 100%
+  );
+  overflow: visible;
 }
 .career-dot {
   position: absolute;

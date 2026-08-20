@@ -14,7 +14,7 @@ export default function setSplitText() {
   ScrollTrigger.config({ ignoreMobileResize: true });
   if (window.innerWidth < 900) {
     document.querySelectorAll(".para, .title").forEach((el) => {
-      gsap.set(el, { autoAlpha: 1, opacity: 1, visibility: "visible", y: 0, rotate: 0 });
+      gsap.set(el, { autoAlpha: 1, opacity: 1, visibility: "visible", y: 0, rotate: 0, clearProps: "transform" });
     });
     return;
   }

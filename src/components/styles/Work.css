@@ -3,15 +3,18 @@
   font-size: 70px;
   font-weight: 500;
 }
-.work-section h2 > span {
+
+.work-section h2>span {
   color: var(--accentColor);
 }
+
 .work-section {
   transition: 0s;
   height: 100vh;
   box-sizing: border-box;
   will-change: transform;
 }
+
 .work-container {
   margin: auto;
   display: flex;
@@ -19,6 +22,7 @@
   height: 100%;
   align-content: stretch;
 }
+
 .work-flex {
   width: 100%;
   display: flex;
@@ -38,6 +42,7 @@
   gap: 16px;
   z-index: 20;
 }
+
 .work-arrow {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -46,14 +51,17 @@
   border-radius: 6px;
   cursor: pointer;
 }
+
 .work-arrow:hover {
   background: rgba(255, 255, 255, 0.02);
 }
+
 .work-dots {
   display: flex;
   gap: 8px;
   align-items: center;
 }
+
 .work-dot {
   width: 10px;
   height: 10px;
@@ -62,10 +70,12 @@
   border: none;
   cursor: pointer;
 }
+
 .work-dot.active {
   background: var(--accentColor);
   box-shadow: 0 0 10px rgba(128, 90, 255, 0.18);
 }
+
 .work-box {
   padding: 60px 60px;
   display: flex;
@@ -77,9 +87,11 @@
   gap: 28px;
   justify-content: start;
 }
+
 .work-flex .work-box:nth-child(even) {
   flex-direction: column-reverse;
 }
+
 .work-flex::before,
 .work-flex::after {
   content: "";
@@ -92,18 +104,22 @@
   transform: translateX(-50%);
   pointer-events: none;
 }
+
 .work-flex::after {
   top: 100%;
 }
+
 .work-title {
   justify-content: space-between;
   display: flex;
   width: 100%;
   margin-bottom: 20px;
 }
-.work-title > div {
+
+.work-title>div {
   text-align: right;
 }
+
 .work-title h3 {
   font-size: 50px;
   line-height: 50px;
@@ -116,6 +132,7 @@
   gap: 12px;
   margin-top: 24px;
 }
+
 .work-btn {
   padding: 8px 20px;
   background-color: transparent;
@@ -128,6 +145,7 @@
   cursor: pointer;
   display: inline-block;
 }
+
 .work-btn:hover {
   background-color: var(--accentColor);
   color: #fff;
@@ -138,15 +156,18 @@
   font-weight: 400;
   margin: 0;
 }
+
 .work-info p {
   font-weight: 200;
   color: #adacac;
   margin: 0;
   margin-top: 3px;
 }
-.work-info > p {
+
+.work-info>p {
   width: 90%;
 }
+
 .work-media {
   display: flex;
   flex-direction: column;
@@ -159,14 +180,17 @@
   font-size: 14px;
   line-height: 22px;
 }
+
 .work-image {
   display: flex;
   width: 100%;
   justify-content: center;
 }
+
 .work-image-in {
   position: relative;
 }
+
 .work-link {
   position: absolute;
   bottom: 10px;
@@ -185,12 +209,15 @@
   transition: 0.3s;
   opacity: 0;
 }
+
 .work-image a:hover {
   color: inherit;
 }
+
 .work-image a:hover .work-link {
   opacity: 1;
 }
+
 .work-image video {
   position: absolute;
   width: 100%;
@@ -200,99 +227,176 @@
   background-color: #000;
   object-fit: cover;
 }
+
 .work-image img {
   max-width: 100%;
   max-height: 350px;
 }
+
 @media only screen and (max-height: 900px) {
   .work-image img {
     max-height: 250px;
   }
+
   .work-box {
     padding-top: 40px;
     padding-bottom: 40px;
   }
+
   .work-section h2 {
     font-size: 60px;
     margin-bottom: 30px;
     margin-top: 70px;
   }
 }
+
 @media only screen and (max-width: 1400px) {
   .work-title h3 {
     font-size: 35px;
   }
+
   .work-info p {
     font-size: 13px;
   }
+
   .work-info h4 {
     font-size: 15px;
   }
+
   .work-box {
     width: 450px;
     padding: 50px;
   }
+
   .work-flex {
     margin-left: -50px;
     padding-right: 75px;
   }
+
   .work-section h2 {
     font-size: 50px;
   }
 }
-@media only screen and (max-width: 900px) {
-  .work-box {
-    width: 350px;
-    padding: 30px;
-  }
-  .work-flex {
-    margin-left: -30px;
-    padding-right: 45px;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .work-box {
-    width: 100vw;
-    padding: 20px;
-  }
-  .work-flex {
-    margin-left: 0px;
-    padding-right: 20px;
-  }
-  .work-title h3 {
-    font-size: 28px;
-  }
-}
 
-@media only screen and (max-height: 650px) {
-  .work-image img {
-    max-height: 200px;
+@media only screen and (max-width: 900px) {
+  .work-section {
+    height: 100vh;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
   }
+
   .work-section h2 {
-    font-size: 40px;
-    margin-bottom: 20px;
+    font-size: 32px;
+    margin-top: 15px;
+    margin-bottom: 5px;
   }
-  .work-box {
-    gap: 20px;
+
+  .work-controls {
+    position: relative;
+    right: auto;
+    top: auto;
+    margin-bottom: 10px;
+    justify-content: flex-end;
+    width: calc(100% - 30px);
   }
-}
-/* @media only screen and (max-width: 900px) {
-  .work-image img {
-    max-height: 200px;
-  }
-  .work-section h2 {
-    font-size: 40px;
-    margin-bottom: 20px;
-  }
-  .work-box {
-    gap: 20px;
-  }
-} */
-@media only screen and (max-width: 1025px) {
-  .work-container {
-    align-content: normal;
-  }
+
   .work-flex {
-    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: calc(100% - 85px);
+    margin-left: 0;
+    padding-right: 0;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .work-box {
+    width: 85vw;
+    max-width: 85vw;
+    padding: 14px 16px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column !important;
+    gap: 8px;
+    border-right: 1px solid #363636;
+    justify-content: flex-start;
+  }
+
+  .work-flex .work-box:nth-child(even) {
+    flex-direction: column !important;
+  }
+
+  .work-media {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .work-image {
+    width: 100%;
+  }
+
+  .work-image img {
+    width: 100%;
+    max-height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .work-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .work-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .work-title h3 {
+    font-size: 24px;
+    line-height: 26px;
+    margin: 0;
+  }
+
+  .work-title>div {
+    text-align: right;
+  }
+
+  .work-title h4 {
+    font-size: 13px;
+    margin: 0;
+  }
+
+  .work-desc p {
+    font-size: 11px;
+    line-height: 15px;
+  }
+
+  .work-info p {
+    font-size: 11px;
+    line-height: 15px;
+  }
+
+  .work-info h4 {
+    font-size: 12px;
+    margin-top: 3px;
+  }
+
+  .work-buttons {
+    margin-top: 6px;
+  }
+
+  .work-btn {
+    padding: 5px 12px;
+    font-size: 11px;
   }
 }

@@ -83,10 +83,7 @@ const Work = () => {
       const lastRect = lastBox.getBoundingClientRect();
       const containerWidth = workContainer.clientWidth;
 
-      // Distance from left of first box to right of last box
       const totalBoxesWidth = lastRect.right - firstRect.left;
-
-      // Translate distance: just enough to bring last box right edge into view
       const translateX = Math.max(0, totalBoxesWidth - containerWidth + 80);
       translateRef.current = translateX;
 
@@ -117,7 +114,6 @@ const Work = () => {
 
     createTimeline();
 
-    // Refresh after layout and images settle
     const timer = setTimeout(() => {
       createTimeline();
     }, 500);
