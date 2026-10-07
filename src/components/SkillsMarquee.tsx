@@ -177,11 +177,7 @@ const SkillsMarquee = () => {
                       <div className="skill-grid-icon-wrapper">
                         {skill.icon}
                       </div>
-                      <div className="skill-grid-overlay">
-                        <div className="skill-grid-overlay-content">
-                          <p className="skill-grid-name">{skill.name}</p>
-                        </div>
-                      </div>
+                      <p className="skill-grid-name">{skill.name}</p>
                     </div>
                   );
                 })}
