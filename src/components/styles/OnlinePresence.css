@@ -1,0 +1,297 @@
+.online-presence,
+.online-presence * {
+  box-sizing: border-box;
+}
+
+.online-presence {
+  position: relative;
+  z-index: 10;
+  width: min(100%, 1500px);
+  max-width: calc(100% - 64px);
+  margin: 0 auto;
+  padding: 110px 0 120px;
+  overflow: hidden;
+}
+
+.online-presence-container {
+  width: min(100% - 64px, 1500px);
+  margin: 0 auto;
+}
+
+.online-presence-heading {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.online-presence-eyebrow {
+  margin: 0 0 12px;
+  color: var(--accentColor);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.online-presence-heading h2 {
+  margin: 0;
+  background: linear-gradient(180deg, #ffffff 10%, var(--accentColor) 100%);
+  background-clip: text;
+  font-size: clamp(42px, 7vw, 92px);
+  font-weight: 500;
+  letter-spacing: normal;
+  line-height: 1.05;
+  text-transform: none;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.online-presence-intro {
+  max-width: 470px;
+  margin: 22px auto 0;
+  color: #a7a1af;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.online-presence-stage {
+  position: relative;
+  min-height: 590px;
+  margin: 54px auto 0;
+  isolation: isolate;
+}
+
+.online-presence-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(194, 164, 255, 0.24);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.online-presence-ring-outer {
+  width: min(72vw, 760px);
+  height: min(72vw, 760px);
+}
+
+.online-presence-ring-inner {
+  width: min(52vw, 550px);
+  height: min(52vw, 550px);
+  border-color: rgba(194, 164, 255, 0.14);
+}
+
+.online-presence-stage::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(35vw, 400px);
+  height: min(35vw, 400px);
+  border-radius: 50%;
+  background: rgba(127, 64, 255, 0.2);
+  content: "";
+  filter: blur(70px);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.online-presence-avatar-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 8px;
+  border: 1px solid rgba(194, 164, 255, 0.8);
+  border-radius: 50%;
+  background: #0b080c;
+  box-shadow: 0 0 50px rgba(127, 64, 255, 0.32);
+  transform: translate(-50%, -50%);
+}
+
+.online-presence-avatar {
+  display: grid;
+  width: clamp(145px, 19vw, 220px);
+  height: clamp(145px, 19vw, 220px);
+  place-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, #57417c, #17111e 72%);
+}
+
+.online-presence-avatar img {
+  display: block;
+  width: 94%;
+  height: 94%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.online-presence-links {
+  position: absolute;
+  inset: 0;
+}
+
+.online-presence-card {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: clamp(220px, 28vw, 330px);
+  min-height: 82px;
+  padding: 13px 18px;
+  border: 1px solid rgba(194, 164, 255, 0.3);
+  border-radius: 48px;
+  background: rgba(27, 18, 37, 0.88);
+  color: #f4f0fa;
+  transition:
+    border-color 240ms ease,
+    background 240ms ease,
+    transform 240ms ease;
+}
+
+.online-presence-card:hover {
+  border-color: var(--accentColor);
+  background: rgba(57, 35, 79, 0.95);
+  color: #fff;
+  transform: scale(1.04);
+}
+
+.online-presence-card:nth-child(1) {
+  top: 17%;
+  left: 2%;
+}
+
+.online-presence-card:nth-child(2) {
+  top: 17%;
+  right: 2%;
+}
+
+.online-presence-card:nth-child(3) {
+  bottom: 17%;
+  left: 2%;
+}
+
+.online-presence-card:nth-child(4) {
+  right: 2%;
+  bottom: 17%;
+}
+
+.online-presence-icon {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  flex: 0 0 50px;
+  place-items: center;
+  border: 1px solid rgba(194, 164, 255, 0.65);
+  border-radius: 50%;
+  color: var(--accentColor);
+  font-size: 22px;
+}
+
+.online-presence-card-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-left: 13px;
+}
+
+.online-presence-card-copy strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.online-presence-card-copy small {
+  color: #aaa1b8;
+  font-size: 12px;
+}
+
+.online-presence-arrow {
+  margin-left: auto;
+  color: var(--accentColor);
+  font-size: 22px;
+}
+
+@media (max-width: 900px) {
+  .online-presence {
+    width: min(100%, 650px);
+    max-width: calc(100% - 30px);
+    padding: 80px 0;
+  }
+
+  .online-presence-container {
+    width: min(100% - 30px, 650px);
+  }
+
+  .online-presence-stage {
+    min-height: 650px;
+  }
+
+  .online-presence-ring-outer {
+    width: min(88vw, 560px);
+    height: min(88vw, 560px);
+  }
+
+  .online-presence-ring-inner {
+    width: min(66vw, 430px);
+    height: min(66vw, 430px);
+  }
+
+  .online-presence-card {
+    width: min(43vw, 290px);
+  }
+
+  .online-presence-card:nth-child(1),
+  .online-presence-card:nth-child(3) {
+    left: 0;
+  }
+
+  .online-presence-card:nth-child(2),
+  .online-presence-card:nth-child(4) {
+    right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .online-presence-heading h2 {
+    letter-spacing: normal;
+  }
+
+  .online-presence-intro {
+    font-size: 15px;
+  }
+
+  .online-presence-stage {
+    min-height: 690px;
+    margin-top: 34px;
+  }
+
+  .online-presence-ring-outer {
+    width: 92vw;
+    height: 92vw;
+  }
+
+  .online-presence-ring-inner {
+    width: 70vw;
+    height: 70vw;
+  }
+
+  .online-presence-card {
+    width: 100%;
+    min-height: 70px;
+  }
+
+  .online-presence-card:nth-child(1) {
+    top: 4%;
+  }
+
+  .online-presence-card:nth-child(2) {
+    top: 23%;
+  }
+
+  .online-presence-card:nth-child(3) {
+    bottom: 23%;
+  }
+
+  .online-presence-card:nth-child(4) {
+    bottom: 4%;
+  }
+}

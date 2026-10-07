@@ -3,6 +3,9 @@ import WorkImage from "./WorkImage";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useState, useRef } from "react";
+import lungCancerImage from "../assets/Lung Cancer Detection Model.png";
+import ragImage from "../assets/RAG Q&A System Interface.png";
+import bankingImage from "../assets/Banking Analytics Dashboard Portfolio.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,6 +13,7 @@ const Work = () => {
   const projects = [
     {
       title: "Lung Cancer Detection Model",
+      image: lungCancerImage,
       category: "Machine Learning",
       tools: "Random Forest, Scikit-learn, Python",
       description:
@@ -19,6 +23,7 @@ const Work = () => {
     },
     {
       title: "Bank Enterprise Management System",
+      image: bankingImage,
       category: "Data Analytics",
       tools: "Python, Streamlit, MySQL",
       description:
@@ -28,6 +33,7 @@ const Work = () => {
     },
     {
       title: "RAG Document Q&A System",
+      image: ragImage,
       category: "Full-Stack AI",
       tools: "LangChain, FAISS, FastAPI, React, Docker, AWS EC2",
       description:
@@ -66,9 +72,15 @@ const Work = () => {
       if (timeline) {
         timeline.scrollTrigger?.kill();
         timeline.kill();
+        timeline = null;
       }
 
       gsap.set(workFlex, { x: 0 });
+
+      if (window.innerWidth <= 1024) {
+        translateRef.current = 0;
+        return;
+      }
 
       const boxes = Array.from(
         workFlex.querySelectorAll<HTMLElement>(".work-box")
@@ -191,7 +203,7 @@ const Work = () => {
           {projects.map((project, index) => (
             <div className="work-box" key={index}>
               <div className="work-media">
-                <WorkImage image={`${import.meta.env.BASE_URL}images/placeholder.webp`} alt="" />
+                <WorkImage image={project.image} alt={project.title} />
                 <div className="work-desc">
                   <p>{project.description}</p>
                 </div>
