@@ -3,7 +3,7 @@ import { RGBELoader } from "three-stdlib";
 import { gsap } from "gsap";
 
 const setLighting = (scene: THREE.Scene) => {
-  const directionalLight = new THREE.DirectionalLight(0xc7a9ff, 0);
+  const directionalLight = new THREE.DirectionalLight(0x99f6e4, 0);
   directionalLight.intensity = 0;
   directionalLight.position.set(-0.47, -0.32, -1);
   directionalLight.castShadow = true;
@@ -13,14 +13,23 @@ const setLighting = (scene: THREE.Scene) => {
   directionalLight.shadow.camera.far = 50;
   scene.add(directionalLight);
 
-  const pointLight = new THREE.PointLight(0xc2a4ff, 0, 100, 3);
+  const pointLight = new THREE.PointLight(0x5eead4, 0, 100, 3);
   pointLight.position.set(3, 12, 4);
   pointLight.castShadow = true;
   scene.add(pointLight);
 
   new RGBELoader()
+    .setDataType(THREE.FloatType)
     .setPath(`${import.meta.env.BASE_URL}models/`)
     .load("char_enviorment.hdr", function (texture) {
+      // swap red/green so the map's pink/purple tones turn teal
+      const data = texture.image.data as unknown as Float32Array;
+      for (let i = 0; i < data.length; i += 4) {
+        const red = data[i];
+        data[i] = data[i + 1];
+        data[i + 1] = red;
+      }
+      texture.needsUpdate = true;
       texture.mapping = THREE.EquirectangularReflectionMapping;
       scene.environment = texture;
       scene.environmentIntensity = 0;

@@ -30,18 +30,18 @@ import {
 const skills = [
   { name: "Python", icon: <SiPython color="#3776ab" /> },
   { name: "SQL", icon: <FaDatabase color="#4db6e8" /> },
-  { name: "Pandas", icon: <SiPandas color="#c2a4ff" /> },
+  { name: "Pandas", icon: <SiPandas color="#5eead4" /> },
   { name: "NumPy", icon: <SiNumpy color="#70b7d8" /> },
   { name: "Excel", icon: <FaTable color="#31b77a" /> },
   { name: "MySQL", icon: <SiMysql color="#4479a1" /> },
   { name: "Scikit-learn", icon: <SiScikitlearn color="#f7931e" /> },
   { name: "XGBoost", icon: <FaChartLine color="#f2a65a" /> },
   { name: "TensorFlow", icon: <SiTensorflow color="#ff8a3d" /> },
-  { name: "Machine Learning", icon: <FaBrain color="#c2a4ff" /> },
+  { name: "Machine Learning", icon: <FaBrain color="#5eead4" /> },
   { name: "Deep Learning", icon: <FaBrain color="#ff69b4" /> },
   { name: "Predictive Analytics", icon: <FaChartLine color="#42d7d0" /> },
   { name: "Generative AI", icon: <FaBrain color="#ff69b4" /> },
-  { name: "LLMs", icon: <FaTerminal color="#c2a4ff" /> },
+  { name: "LLMs", icon: <FaTerminal color="#5eead4" /> },
   { name: "AI Agents", icon: <FaRobot color="#20b2aa" /> },
   { name: "Prompt Engineering", icon: <FaTerminal color="#f6c453" /> },
   { name: "RAG", icon: <FaDatabase color="#4db33d" /> },
@@ -53,7 +53,7 @@ const skills = [
   { name: "Git", icon: <SiGit color="#f05032" /> },
   { name: "Matplotlib", icon: <FaChartPie color="#70b7d8" /> },
   { name: "Streamlit", icon: <SiStreamlit color="#ff4b4b" /> },
-  { name: "Data Visualization", icon: <FaChartBar color="#c2a4ff" /> },
+  { name: "Data Visualization", icon: <FaChartBar color="#5eead4" /> },
 ];
 
 const skillGroups = [
@@ -114,7 +114,7 @@ const SkillsMarquee = () => {
   const handleSkillEnter = (item: HTMLDivElement) => {
     gsap.to(item, {
       scale: 1.08,
-      boxShadow: "0 0 24px rgba(194, 164, 255, 0.42)",
+      boxShadow: "0 0 24px rgba(94, 234, 212, 0.42)",
       duration: 0.25,
       ease: "power2.out",
       overwrite: true,

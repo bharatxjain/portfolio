@@ -49,7 +49,7 @@
 .online-presence-intro {
   max-width: 470px;
   margin: 22px auto 0;
-  color: #a7a1af;
+  color: #a1abaf;
   font-size: 17px;
   line-height: 1.6;
 }
@@ -65,7 +65,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  border: 1px solid rgba(194, 164, 255, 0.24);
+  border: 1px solid rgba(94, 234, 212, 0.24);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
@@ -79,7 +79,7 @@
 .online-presence-ring-inner {
   width: min(52vw, 550px);
   height: min(52vw, 550px);
-  border-color: rgba(194, 164, 255, 0.14);
+  border-color: rgba(94, 234, 212, 0.14);
 }
 
 .online-presence-stage::before {
@@ -89,7 +89,7 @@
   width: min(35vw, 400px);
   height: min(35vw, 400px);
   border-radius: 50%;
-  background: rgba(127, 64, 255, 0.2);
+  background: rgba(20, 184, 166, 0.2);
   content: "";
   filter: blur(70px);
   transform: translate(-50%, -50%);
@@ -101,10 +101,10 @@
   top: 50%;
   left: 50%;
   padding: 8px;
-  border: 1px solid rgba(194, 164, 255, 0.8);
+  border: 1px solid rgba(94, 234, 212, 0.8);
   border-radius: 50%;
-  background: #0b080c;
-  box-shadow: 0 0 50px rgba(127, 64, 255, 0.32);
+  background: #070b0c;
+  box-shadow: 0 0 50px rgba(20, 184, 166, 0.32);
   transform: translate(-50%, -50%);
 }
 
@@ -115,7 +115,7 @@
   place-items: center;
   overflow: hidden;
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 35%, #57417c, #17111e 72%);
+  background: radial-gradient(circle at 50% 35%, #2f6b6f, #0f1a1c 72%);
 }
 
 .online-presence-avatar img {
@@ -138,10 +138,10 @@
   width: clamp(220px, 28vw, 330px);
   min-height: 82px;
   padding: 13px 18px;
-  border: 1px solid rgba(194, 164, 255, 0.3);
+  border: 1px solid rgba(94, 234, 212, 0.3);
   border-radius: 48px;
-  background: rgba(27, 18, 37, 0.88);
-  color: #f4f0fa;
+  background: rgba(16, 30, 32, 0.88);
+  color: #f0f8fa;
   transition:
     border-color 240ms ease,
     background 240ms ease,
@@ -150,7 +150,7 @@
 
 .online-presence-card:hover {
   border-color: var(--accentColor);
-  background: rgba(57, 35, 79, 0.95);
+  background: rgba(26, 66, 70, 0.95);
   color: #fff;
   transform: scale(1.04);
 }
@@ -181,7 +181,7 @@
   height: 50px;
   flex: 0 0 50px;
   place-items: center;
-  border: 1px solid rgba(194, 164, 255, 0.65);
+  border: 1px solid rgba(94, 234, 212, 0.65);
   border-radius: 50%;
   color: var(--accentColor);
   font-size: 22px;
@@ -200,7 +200,7 @@
 }
 
 .online-presence-card-copy small {
-  color: #aaa1b8;
+  color: #a1b3b8;
   font-size: 12px;
 }
 

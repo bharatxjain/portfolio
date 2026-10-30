@@ -438,7 +438,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 1.5px solid rgba(194, 164, 255, 0.4);
+  border: 1.5px solid rgba(94, 234, 212, 0.4);
   border-radius: 50%;
 }
 .what-3d-card .ring-1 { transform: rotateY(0deg); }
@@ -484,11 +484,11 @@
 @keyframes whatPulseFace {
   0% {
     transform: translate(-50%, -50%) translateZ(15px) scale(1);
-    filter: drop-shadow(0 0 6px rgba(194, 164, 255, 0.5)) brightness(1.1);
+    filter: drop-shadow(0 0 6px rgba(94, 234, 212, 0.5)) brightness(1.1);
   }
   100% {
     transform: translate(-50%, -50%) translateZ(15px) scale(1.08);
-    filter: drop-shadow(0 0 14px rgba(194, 164, 255, 0.8)) brightness(1.3);
+    filter: drop-shadow(0 0 14px rgba(94, 234, 212, 0.8)) brightness(1.3);
   }
 }
 

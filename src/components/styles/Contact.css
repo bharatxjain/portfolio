@@ -34,7 +34,7 @@
 
   font-size: clamp(28px, 7.5vw, 135px);
 
-  background: linear-gradient(0deg, #7f40ff, #ffffff);
+  background: linear-gradient(0deg, #14b8a6, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

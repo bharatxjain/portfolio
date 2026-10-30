@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { DRACOLoader, GLTF, GLTFLoader } from "three-stdlib";
 import { setCharTimeline, setAllTimeline } from "../../utils/GsapScroll";
 import { decryptFile } from "./decrypt";
+import applyLikeness from "./likeness";
 
 const setCharacter = (
   renderer: THREE.WebGLRenderer,
@@ -36,6 +37,7 @@ const setCharacter = (
                 mesh.frustumCulled = true;
               }
             });
+            applyLikeness(character);
             resolve(gltf);
             setCharTimeline(character, camera);
             setAllTimeline();

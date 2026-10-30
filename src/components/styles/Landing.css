@@ -19,8 +19,8 @@
   position: fixed;
   width: 300px;
   height: 300px;
-  background-color: #fb8dff;
-  box-shadow: inset -50px 40px 50px rgba(84, 0, 255, 0.6);
+  background-color: #5eead4;
+  box-shadow: inset -50px 40px 50px rgba(6, 70, 150, 0.6);
   filter: blur(60px);
   border-radius: 50%;
   pointer-events: none;
@@ -61,8 +61,8 @@
   height: 320px;
   background: radial-gradient(
     circle,
-    rgba(235, 140, 255, 0.4) 0%,
-    rgba(120, 50, 255, 0.15) 70%,
+    rgba(94, 234, 212, 0.4) 0%,
+    rgba(14, 116, 144, 0.15) 70%,
     transparent 100%
   );
   filter: blur(70px);
@@ -94,9 +94,9 @@
   width: 400px;
   height: 400px;
   z-index: 1;
-  background-color: #f59bf8;
+  background-color: #67e8f9;
   transform: translate(-50%, 36%) scaleX(1.4);
-  box-shadow: inset 66px 35px 85px 0px rgba(85, 0, 255, 0.65);
+  box-shadow: inset 66px 35px 85px 0px rgba(6, 70, 150, 0.65);
   filter: blur(50px);
   border-radius: 50%;
   top: 50%;
@@ -222,7 +222,7 @@
   left: 0;
 }
 h2.landing-info-h2 {
-  color: #c481ff;
+  color: #2dd4bf;
   font-size: 24px;
   width: 100%;
   margin: 0;
